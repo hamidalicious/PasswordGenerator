@@ -1,21 +1,42 @@
-// Assignment Code
-var generateBtn = document.querySelector("#generate");
+function generatePassword() {
+  var password = []
+  var length = parseInt(prompt("How long do you want your password to be?"))
 
-// created arrays for password characters
-
-let upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-let lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-let symbols = ["!", "@", "#", "$", "*", "%", "$", "/", "?", "@", "&", "+"]
-let numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
-
-// Write password to the #password input
-function writePassword(password) {
-  let password = generatePassword();
-  let passwordText = document.querySelector
-
-}
-
+  if (length < 8 || length > 128 || isNaN(length)) {
+    alert("Make sure the password length is more than 8 characters and less than 128 characters")
   
+  } else {
+    
+    let confirmLower = confirm("Would you like uppercase letters?");
+    let confirmUpper = confirm("Would you like lowercase letters?");
+    let confirmSymbols = confirm("Would you like any symbols?");
+    let confirmNumbers = confirm("Would you like any numbers?");
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+    while (password.length < length) {
+      if (password.length === length) {
+        break
+      }
+      if (confirmUpper) {
+        password.push(uppercase[Math.floor(Math.random() * uppercase.length)])
+      }
+      if (password.length === length) {
+        break
+      }
+      if (confirmLower) {
+        password.push(lowercase[Math.floor(Math.random() * lowercase.length)])
+      }
+      if (password.length === length) {
+        break
+      }
+      if (confirmSymbols) {
+        password.push(symbols[Math.floor(Math.random() * symbols.length)])
+      }
+      if (password.length === length) {
+        break
+      }
+      if (confirmNumbers) {
+        password.push(numerics[Math.floor(Math.random() * numerics.length)]);
+      }
+    }
+  }
+}
